@@ -3,7 +3,7 @@ var url = require("url");
 // All of the regular expressions in use within readability.
 var regexps = {
   unlikelyCandidatesRe: /combx|modal|lightbox|comment|disqus|foot|header|menu|meta|nav|rss|shoutbox|sidebar|sponsor|social|teaserlist|time|tweet|twitter/i,
-  okMaybeItsACandidateRe: /and|article|body|column|main|story|entry|^post/im,
+  okMaybeItsACandidateRe: /and|article|body|column|main|story|entry|^post|^content/im,
   positiveRe: /article|body|content|entry|hentry|page|pagination|post|section|chapter|description|main|blog|text/i,
   negativeRe: /combx|comment|contact|foot|footer|footnote|link|media|meta|promo|related|scroll|shoutbox|sponsor|utility|tags|widget/i,
   divToPElementsRe: /<(a|blockquote|dl|div|img|ol|p|pre|table|ul)/i,
@@ -65,7 +65,7 @@ var prepDocument = module.exports.prepDocument = function(document) {
       }
     }
   }
-  
+
   // Strip out all <script> tags, as they *should* be useless
   var scripts = document.getElementsByTagName('script');
   [].forEach.call(scripts, function (node) {
